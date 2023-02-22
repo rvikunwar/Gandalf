@@ -28,6 +28,9 @@
 		461295919C614423837442EA /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA933A97722E4C0C93CC98FA /* PlusJakartaSans-Regular.ttf */; };
 		8EDA5D5B561E466AB5B560F4 /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB2AF839EC34562A707452B /* PlusJakartaSans-SemiBold.ttf */; };
 		2B98D79F12594A39B31E28F2 /* PlusJakartaSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 733B0A6433174B229703353B /* PlusJakartaSans-SemiBoldItalic.ttf */; };
+		67E94B53F1ED4480AFCEC617 /* MacondoSwashCaps-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4260A907D048688E24E7CD /* MacondoSwashCaps-Regular.ttf */; };
+		57EC88E743004FFA81FD3F22 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D6D0F92D56D45048512C32D /* Lato-Light.ttf */; };
+		459AA3D203E9415DA05C2796 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AADCB9A062144CCB7B0EC14 /* Lato-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		EA933A97722E4C0C93CC98FA /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; name = "PlusJakartaSans-Regular.ttf"; path = "../src/assets/fonts/PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		2CB2AF839EC34562A707452B /* PlusJakartaSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "PlusJakartaSans-SemiBold.ttf"; path = "../src/assets/fonts/PlusJakartaSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		733B0A6433174B229703353B /* PlusJakartaSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "PlusJakartaSans-SemiBoldItalic.ttf"; path = "../src/assets/fonts/PlusJakartaSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FF4260A907D048688E24E7CD /* MacondoSwashCaps-Regular.ttf */ = {isa = PBXFileReference; name = "MacondoSwashCaps-Regular.ttf"; path = "../src/assets/fonts/MacondoSwashCaps-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2D6D0F92D56D45048512C32D /* Lato-Light.ttf */ = {isa = PBXFileReference; name = "Lato-Light.ttf"; path = "../src/assets/fonts/Lato-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2AADCB9A062144CCB7B0EC14 /* Lato-Regular.ttf */ = {isa = PBXFileReference; name = "Lato-Regular.ttf"; path = "../src/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +200,9 @@
 				EA933A97722E4C0C93CC98FA /* PlusJakartaSans-Regular.ttf */,
 				2CB2AF839EC34562A707452B /* PlusJakartaSans-SemiBold.ttf */,
 				733B0A6433174B229703353B /* PlusJakartaSans-SemiBoldItalic.ttf */,
+				FF4260A907D048688E24E7CD /* MacondoSwashCaps-Regular.ttf */,
+				2D6D0F92D56D45048512C32D /* Lato-Light.ttf */,
+				2AADCB9A062144CCB7B0EC14 /* Lato-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -309,6 +318,9 @@
 				461295919C614423837442EA /* PlusJakartaSans-Regular.ttf in Resources */,
 				8EDA5D5B561E466AB5B560F4 /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				2B98D79F12594A39B31E28F2 /* PlusJakartaSans-SemiBoldItalic.ttf in Resources */,
+				67E94B53F1ED4480AFCEC617 /* MacondoSwashCaps-Regular.ttf in Resources */,
+				57EC88E743004FFA81FD3F22 /* Lato-Light.ttf in Resources */,
+				459AA3D203E9415DA05C2796 /* Lato-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

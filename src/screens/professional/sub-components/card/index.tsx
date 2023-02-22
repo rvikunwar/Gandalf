@@ -16,8 +16,10 @@ function Card(){
                         <Text style={styles.name}>Robert Fox</Text>
                         <Text style={styles.position}>Project Manager</Text>
                     </View>
-                    <Tag text="Verified" style={{ marginRight: 10 }}/>
-                    <Tag text="Verified"/>
+                    <View>
+                        <Tag text="Verified" style={{ marginRight: 10, marginBottom: 5 }}/>
+                        <Tag text="Available"/>
+                    </View>
                 </View>
                 <View style={styles.footer}>
                     <Text style={styles.email}>roberfox@gmail.com</Text>

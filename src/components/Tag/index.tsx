@@ -9,9 +9,17 @@ interface TagProps {
 }
 
 export default function Tag({ text, style }: TagProps) {
+
+    function fillColor(val: string){
+        switch(val){
+            case "Available": return "#00A938";
+            case "Verified": return "#FF0000";
+            default: return "#FF0000";
+        }
+    }
     return (
-        <View style={[ styles.tag, { borderColor: "#FF0000" }, style ]}>
-            <Text style={[{ color: "#FF0000" }, styles.text]}>{text}</Text>
+        <View style={[ styles.tag, { borderColor: fillColor(text) }, style ]}>
+            <Text style={[{ color: fillColor(text) }, styles.text]}>{text}</Text>
         </View>
     )
 }

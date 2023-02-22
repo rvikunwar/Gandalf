@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
 
     header: {
         flexDirection: "row", 
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        justifyContent: 'space-between',
+        width: '82%'
     },
 
     footer: {
