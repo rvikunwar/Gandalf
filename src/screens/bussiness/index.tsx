@@ -3,13 +3,12 @@ import React, { useState } from 'react'
 import Card from './sub-components/card'
 import Searchbar from '../../components/Searchbar'
 import Header from '../../components/Header'
-import { ProfStackNavProps } from '../../navigations/navigationTypes'
 
 
-const professionals = new Array(10).fill(0)
+const business = new Array(10).fill(0)
 
 
-function ProfessionalManagement({  navigation }: ProfStackNavProps<"ProfessionalManagement"> ) {
+function BusinessManagement() {
 
     //for filtering and searching values
     const [ searchValue, setSearchValue ] = useState("")
@@ -26,7 +25,7 @@ function ProfessionalManagement({  navigation }: ProfStackNavProps<"Professional
         <View style={{ backgroundColor: "#F1F3F6", paddingBottom: 70 }}>
 
             <Header 
-                title="Professional Management"
+                title="Business Management"
                 logo={true}
                 headerStyle={{
                     width: "100%",
@@ -37,10 +36,10 @@ function ProfessionalManagement({  navigation }: ProfStackNavProps<"Professional
                     fontSize: 17,
                     fontWeight: "500"
                 }}
-                goToProfile={() => {  }}/>
+                goToProfile={() => {}}/>
 
             <FlatList
-                data={professionals}
+                data={business}
                 ListHeaderComponent={
                     <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
                         <Searchbar
@@ -63,4 +62,4 @@ function ProfessionalManagement({  navigation }: ProfStackNavProps<"Professional
     )
 }
 
-export default ProfessionalManagement
+export default BusinessManagement

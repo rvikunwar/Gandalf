@@ -33,8 +33,8 @@ export default function Searchbar({ style,
             />
             <TouchableOpacity onPress={onClearSearchbar}>
                 { value.length == 0 ? 
-                    <SearchSvg height={26} width={26}/>:
-                    <CloseSvg height={26} width={26}/>
+                    <SearchSvg height={24} width={24}/>:
+                    <CloseSvg height={24} width={24}/>
                 } 
             </TouchableOpacity>
         </View>

@@ -3,9 +3,18 @@ import SearchSvg from './svgs/Search.svg'
 import CloseSvg from './svgs/Close.svg'
 import Logo from './svgs/Logo.svg'
 import ProfessionalSvg from './svgs/Professional.svg'
+import BusinessSvg from './svgs/Business.svg'
+import ProfileSvg from './svgs/Profile.svg'
+import BackSvg from './svgs/Back.svg'
+import LogoutSvg from "./svgs/Logout.svg"
+import BackSvgv1 from './svgs/Backv1.svg'
+import DotSvg from './svgs/Dot.svg'
+import ArrowDown from './svgs/ArrowDown.svg'
+
 
 //svg icons
-export { SearchSvg, CloseSvg, Logo, ProfessionalSvg };
+export { SearchSvg, CloseSvg, Logo, ProfessionalSvg, 
+    BusinessSvg, ProfileSvg, BackSvg, LogoutSvg, BackSvgv1, DotSvg, ArrowDown };
 
 
 export const Images:ImageProp = {

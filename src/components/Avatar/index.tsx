@@ -4,12 +4,13 @@ import styles from './style'
 
 interface AvatarProps {
     image: ReturnType<typeof require>;
+    size?: number,
 }
 
-export default function Avatar({ image }: AvatarProps) {
+export default function Avatar({ image, size }: AvatarProps) {
     return (
             <Image 
-                style={styles.avatarImage} 
+                style={[{ height: size??60, width: size??60, borderRadius:size??60 }, styles.avatarImage ]} 
                 source={image}/>
     )
 }
