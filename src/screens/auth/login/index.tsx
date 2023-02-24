@@ -7,6 +7,8 @@ import Checkbox from '../../../components/Checkbox'
 import Toast from 'react-native-toast-message'
 import { validateEmail, validatePassword } from '../../../utils'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useGandalfDispatch, useGandalfSelector } from '../../../hooks'
+import { clearState, loginUser, userSelector } from '../../../store/features/authSlice'
 
 
 export default function Login() {
@@ -19,6 +21,9 @@ export default function Login() {
     //storing email/ password for login
     const [ formdata, setFormdata ] = useState(defaultHandler)
 
+    //dispatch handler
+    const dispatch = useGandalfDispatch()
+    const { isSuccess, isError, isFetching, message } = useGandalfSelector(userSelector)
 
     //on submitting login data for authentication
     const onLoginHandler = () => {
@@ -26,7 +31,7 @@ export default function Login() {
         if(!validateEmail(formdata.email)){
             Toast.show({
                 type: 'error',
-                text1: 'Email is not valid',
+                text2: 'Email is not valid',
             });
             return;
         }
@@ -41,11 +46,13 @@ export default function Login() {
         }
 
         handleRememberMe();
+
+        dispatch(loginUser(formdata));
     }
 
 
     //for checkbox - remember password
-    const [ rememberMe, setRememberMe ] = useState(false)
+    const [ rememberMe, setRememberMe ] = useState(true)
 
     const handleRememberMe = async () => {
         if (rememberMe) {
@@ -73,8 +80,8 @@ export default function Login() {
             try {
                 const storedEmail = await AsyncStorage.getItem('email');
                 const storedPassword = await AsyncStorage.getItem('password');
-
-                console.log(storedEmail, storedPassword, isRunning)
+                // debug 
+                // console.log(storedEmail, storedPassword, isRunning)
                 if (storedEmail && storedPassword && isRunning) {
                     setFormdata({
                         email: storedEmail, password: storedPassword
@@ -92,6 +99,17 @@ export default function Login() {
             isRunning = false;
         }
     }, []);
+
+
+    useEffect(()=>{
+        if(isError){
+            Toast.show({
+                type: "error",
+                text1: message
+            })
+            dispatch(clearState())
+        }
+    },[ isSuccess, isError, message ])
 
 
     return (
@@ -133,6 +151,7 @@ export default function Login() {
                 <View style={styles.mainStyle}>
                     <Checkbox 
                         size={19}
+                        value={rememberMe}
                         textStyle={styles.checkboxText}
                         text="Remember Password"
                         onPress={(isChecked: boolean) => setRememberMe(isChecked)}/>   
@@ -140,6 +159,7 @@ export default function Login() {
                 </View>
 
                 <Button
+                    isDisabled={isFetching}
                     onPress={onLoginHandler}
                     title="Login"
                     style={styles.btnStyle}

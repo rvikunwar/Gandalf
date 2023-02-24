@@ -1,29 +1,24 @@
 import { ScrollView, View } from 'react-native'
 import React from 'react'
 import Header from '../../components/Header'
-import ProfileHeader from  "./sub-components/Header"
+import { BusinessScreenNavigationProp } from '../../navigations/navigationTypes'
 import Description from './sub-components/Description'
-import Skills from './sub-components/Skills'
-import Summary from './sub-components/Summary'
-import JobApplication from './sub-components/JobsApplication'
-import { ProfessionalScreenNavigationProp } from '../../navigations/navigationTypes'
+import ProfileHeader from './sub-components/Header'
 import VerifySwitch from './sub-components/VerifySwitch'
 
 
-function ProfessionalDetails({ navigation }: ProfessionalScreenNavigationProp) {
-
+function BusinessDetails({ navigation }: BusinessScreenNavigationProp) {
 
     //going back to last screen
     function goToBack(){
         navigation.goBack()
     }
 
-
     return (
-        <View style={{ backgroundColor: "white", paddingBottom: 70 }}>
+        <View style={{ backgroundColor: "white", flex: 1, paddingBottom: 70 }}>
 
             <Header 
-                title="Professional Details"
+                title="Business Details"
                 headerStyle={{
                     width: "100%",
                     paddingHorizontal: 20
@@ -39,13 +34,9 @@ function ProfessionalDetails({ navigation }: ProfessionalScreenNavigationProp) {
                 <VerifySwitch/>
                 <ProfileHeader/>
                 <Description/>
-                <Skills/>
-                <Summary/>
-                <JobApplication/>
             </ScrollView>
-
         </View>
     )
 }
 
-export default ProfessionalDetails
+export default BusinessDetails

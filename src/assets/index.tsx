@@ -19,6 +19,7 @@ export { SearchSvg, CloseSvg, Logo, ProfessionalSvg,
 
 export const Images:ImageProp = {
     'defaultProfile': require("./images/profile.jpg"),
+    'defaultCompany': require("./images/company.png")
 }
 
 

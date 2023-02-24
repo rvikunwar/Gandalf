@@ -3,7 +3,12 @@ import React from 'react'
 import { ArrowDown, DotSvg } from '../../../../assets'
 import styles from './style'
 
-export default function Job() {
+
+interface JobProps {
+    onStatusHandler: () => void;
+}
+
+export default function Job({ onStatusHandler }: JobProps) {
     return (
         <View style={styles.jobView}>
             <View style={styles.left}>
@@ -13,9 +18,9 @@ export default function Job() {
                     <Text style={styles.project}>NFT Marketplace</Text>
                 </View>
             </View>
-            <TouchableOpacity style={styles.status}>
+            <TouchableOpacity style={styles.status} onPress={onStatusHandler}>
                 <Text style={styles.statusText}>Hired</Text>
-                <ArrowDown/>
+                <ArrowDown width={13} height={13}/>
             </TouchableOpacity>
         </View>
     )

@@ -1,15 +1,15 @@
-import { View, FlatList } from 'react-native'
+import { View, FlatList, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import Card from './sub-components/card'
 import Searchbar from '../../components/Searchbar'
 import Header from '../../components/Header'
-import { ProfStackNavProps } from '../../navigations/navigationTypes'
+import { ProfessionalScreenNavigationProp } from '../../navigations/navigationTypes'
 
 
 const professionals = new Array(10).fill(0)
 
 
-function ProfessionalManagement({  navigation }: ProfStackNavProps<"ProfessionalManagement"> ) {
+function ProfessionalManagement({  navigation }: ProfessionalScreenNavigationProp) {
 
     //for filtering and searching values
     const [ searchValue, setSearchValue ] = useState("")
@@ -21,6 +21,11 @@ function ProfessionalManagement({  navigation }: ProfStackNavProps<"Professional
     function onClearHandler(){
         setSearchValue("");
     }
+
+    //for navigating to details screen
+    function goToDetailScreen(){
+        navigation.navigate("ProfessionalDetail")
+    } 
 
     return (
         <View style={{ backgroundColor: "#F1F3F6", paddingBottom: 70 }}>
@@ -37,7 +42,9 @@ function ProfessionalManagement({  navigation }: ProfStackNavProps<"Professional
                     fontSize: 17,
                     fontWeight: "500"
                 }}
-                goToProfile={() => {  }}/>
+                goToProfile={() => { 
+                    navigation.navigate("Profile")
+                }}/>
 
             <FlatList
                 data={professionals}
@@ -53,9 +60,10 @@ function ProfessionalManagement({  navigation }: ProfStackNavProps<"Professional
 
                 }
                 renderItem={() => (
-                    <View style={{ paddingHorizontal: 20 }}>
+                    <TouchableOpacity
+                        onPress={goToDetailScreen} style={{ paddingHorizontal: 20 }}>
                         <Card/>
-                    </View>)}
+                    </TouchableOpacity>)}
                 keyExtractor={item => item}
             />
 

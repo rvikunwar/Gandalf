@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import StackBussiness from '../bussiness';
 import StackProfessional from '../professionals';
-import { BusinessSvg, ProfessionalSvg, SearchSvg } from '../../assets';
+import { BusinessSvg, ProfessionalSvg } from '../../assets';
+import { BottomTabParamList } from '../../navigations/navigationTypes';
 
-const Tab = createBottomTabNavigator();
+
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function AdminBottomTab() {
     return (
@@ -15,7 +16,7 @@ export default function AdminBottomTab() {
                 tabBarIcon: ({ focused, color, size }) => {
                     if (route.name === 'Professional') {
                             return <ProfessionalSvg fill={focused ? "#10047C": "none"}/>;
-                        } else if (route.name === 'Bussiness') {
+                        } else if (route.name === 'Business') {
                             return (<BusinessSvg fill={focused ? "#10047C": "none"}/>);
                         }
                     },
@@ -29,7 +30,7 @@ export default function AdminBottomTab() {
                  >
 
             <Tab.Screen name="Professional" component={StackProfessional}/>
-            <Tab.Screen name="Bussiness" component={StackBussiness}/>
+            <Tab.Screen name="Business" component={StackBussiness}/>
         </Tab.Navigator>
     )
 }

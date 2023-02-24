@@ -4,7 +4,7 @@ import styles from './style'
 
 export default function SkillTag() {
     return (
-        <TouchableOpacity style={styles.skillTag}>
+        <TouchableOpacity disabled style={styles.skillTag}>
             <Text style={styles.text}>React js</Text>
         </TouchableOpacity>
     )

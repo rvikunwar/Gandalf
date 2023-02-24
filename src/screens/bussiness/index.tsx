@@ -1,14 +1,15 @@
-import { View, FlatList } from 'react-native'
+import { View, FlatList, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import Card from './sub-components/card'
 import Searchbar from '../../components/Searchbar'
 import Header from '../../components/Header'
+import { BusinessScreenNavigationProp } from 'navigations/navigationTypes'
 
 
 const business = new Array(10).fill(0)
 
 
-function BusinessManagement() {
+function BusinessManagement({ navigation }: BusinessScreenNavigationProp) {
 
     //for filtering and searching values
     const [ searchValue, setSearchValue ] = useState("")
@@ -20,6 +21,11 @@ function BusinessManagement() {
     function onClearHandler(){
         setSearchValue("");
     }
+
+    //for navigating to details screen
+    function goToDetailScreen(){
+        navigation.navigate("BusinessDetail")
+    } 
 
     return (
         <View style={{ backgroundColor: "#F1F3F6", paddingBottom: 70 }}>
@@ -36,7 +42,7 @@ function BusinessManagement() {
                     fontSize: 17,
                     fontWeight: "500"
                 }}
-                goToProfile={() => {}}/>
+                goToProfile={() => { navigation.navigate("Profile") }}/>
 
             <FlatList
                 data={business}
@@ -52,9 +58,10 @@ function BusinessManagement() {
 
                 }
                 renderItem={() => (
-                    <View style={{ paddingHorizontal: 20 }}>
+                    <TouchableOpacity
+                        onPress={goToDetailScreen} style={{ paddingHorizontal: 20 }}>
                         <Card/>
-                    </View>)}
+                    </TouchableOpacity>)}
                 keyExtractor={item => item}
             />
 

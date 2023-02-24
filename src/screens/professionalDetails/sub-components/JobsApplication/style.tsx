@@ -51,15 +51,16 @@ const styles = StyleSheet.create({
         borderColor: " #F2F6FD",
         borderWidth: 1,
         paddingHorizontal: 15,
-        paddingVertical: 3,
-        borderRadius: 8,
+        paddingVertical: 4,
+        borderRadius: 10,
         flexDirection: 'row',
         alignItems: "center"
     },
 
     statusText: {
         color: "#000000",
-        fontSize: 15,
+        fontSize: 14,
+        marginTop: -5,
         marginRight: 5,
         fontFamily: 'PlusJakartaSans-Regular',
     }

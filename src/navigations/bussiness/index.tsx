@@ -1,13 +1,10 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BusinessManagementScreen from '../../screens/bussiness';
+import { BusinessStackParamList } from '../../navigations/navigationTypes';
 
 
-type BussinessStackParamList = {
-    BussinessManagement: undefined;
-};
-
-const BussinessStack = createNativeStackNavigator<BussinessStackParamList>();
+const BussinessStack = createNativeStackNavigator<BusinessStackParamList>();
 
 export default function StackBussiness() {
     return (
@@ -16,8 +13,9 @@ export default function StackBussiness() {
                 headerShown: false,
             }}>
             <BussinessStack.Screen 
-                name="BussinessManagement" 
+                name="BusinessManagement" 
                 component={BusinessManagementScreen}/>
+
         </BussinessStack.Navigator>
     )
 }
