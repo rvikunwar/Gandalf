@@ -14,9 +14,50 @@ import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
 import persistStore from 'redux-persist/es/persistStore';
 import { Text } from 'react-native';
+import { useGandalfSelector } from '../hooks';
+import { userSelector } from '../store/features/authSlice';
+import SplashScreen from '../screens/SplashScreen';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+
+const NavigatorHook = () => {
+
+    const { auth } = useGandalfSelector(userSelector)
+
+    console.log(auth, 'auth data')
+    return (
+        <NavigationContainer>
+            {
+                !auth ?
+                <Stack.Navigator    
+                    screenOptions={{
+                        headerShown: false
+                    }}
+                    initialRouteName='Login'>
+                    <Stack.Screen 
+                        name="Login" 
+                        component={LoginScreen}/>
+
+                </Stack.Navigator>
+                :
+
+                <Stack.Navigator    
+                    screenOptions={{
+                        headerShown: false
+                    }}
+                    initialRouteName='MainScreen'>
+                    <Stack.Screen name="MainScreen" component={AdminBottomTab}/>
+                    <Stack.Screen name="BusinessDetail" component={BusinessDetails}/>
+                    <Stack.Screen name="ProfessionalDetail" component={ProfessionalDetails}/>
+                    <Stack.Screen name="Profile" component={Profile}/>
+
+                </Stack.Navigator>
+                }
+            <Toast/>
+        </NavigationContainer>
+    )
+}
 
 export default function Navigation() {
 
@@ -25,36 +66,8 @@ export default function Navigation() {
     
     return (
         <Provider store={store}>
-            <PersistGate loading={<Text>Loading</Text>} persistor={persistor}>
-                <NavigationContainer>
-                    {
-                        auth ?
-                        <Stack.Navigator    
-                            screenOptions={{
-                                headerShown: false
-                            }}
-                            initialRouteName='Login'>
-                            <Stack.Screen 
-                                name="Login" 
-                                component={LoginScreen}/>
-
-                        </Stack.Navigator>
-                        :
-
-                        <Stack.Navigator    
-                            screenOptions={{
-                                headerShown: false
-                            }}
-                            initialRouteName='MainScreen'>
-                            <Stack.Screen name="MainScreen" component={AdminBottomTab}/>
-                            <Stack.Screen name="BusinessDetail" component={BusinessDetails}/>
-                            <Stack.Screen name="ProfessionalDetail" component={ProfessionalDetails}/>
-                            <Stack.Screen name="Profile" component={Profile}/>
-
-                        </Stack.Navigator>
-                        }
-                    <Toast/>
-                </NavigationContainer>
+            <PersistGate loading={<SplashScreen/>} persistor={persistor}>
+                <NavigatorHook/>
             </PersistGate>
         </Provider>
     )

@@ -19,7 +19,6 @@ export default function VerifySwitch() {
                 onValueChange={toggleSwitch}
                 value={isEnabled}
             />
-            <Text style={styles.text}>Verify</Text>
         </View>
     )
 }

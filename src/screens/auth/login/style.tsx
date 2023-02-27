@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     login: {
         alignItems: "center",
         justifyContent: "center",
-        flex: 1
+        flex: 1,
+        backgroundColor: "#fff"
     },
 
     header : {
@@ -43,6 +44,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: 20
+    },
+
+    iconStyle: {
+        position: 'absolute',
+        right: 10,
+        top: 10,
     },
 
     checkboxText: {

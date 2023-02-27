@@ -4,10 +4,23 @@ import Avatar from '../../components/Avatar'
 import { Images, LogoutSvg } from '../../assets'
 import styles from './style'
 import BackButton from '../../components/BackButton'
-import { StackNavProps } from '../../navigations/navigationTypes'
+import { ProfileScreenNavigationProp } from '../../navigations/navigationTypes'
+import { useGandalfDispatch, useGandalfSelector } from '../../hooks'
+import { logout, userSelector } from '../../store/features/authSlice'
+import Acroynm from '../../components/Acroynm'
 
 
-export default function Profile({  navigation }: StackNavProps<"Profile"> ) {
+export default function Profile({  navigation }: ProfileScreenNavigationProp ) {
+
+    //dispatch handler
+    const disptach =  useGandalfDispatch();
+    function logoutHandler(){
+        disptach(logout());
+    }
+
+    //selector - user
+    const { firstName, lastName, email, contact } = useGandalfSelector(userSelector)
+
     return (
         <View style={[{ backgroundColor: "white", flex: 1, }]}>
             
@@ -17,8 +30,12 @@ export default function Profile({  navigation }: StackNavProps<"Profile"> ) {
 
             <View style={ styles.profile }>
                 <View style={styles.profileHeader}>
-                    <Avatar image={Images.defaultProfile} size={120}/>
-                    <Text style={styles.name}>Uran Podland</Text>
+                    {/* <Avatar image={Images.defaultProfile} size={120}/>
+                     */}
+                    <Acroynm
+                        name={lastName && firstName ?`${firstName} ${lastName}`: firstName??lastName }  
+                        size={55}/>
+                    <Text style={styles.name}>{firstName+" "+lastName}</Text>
                     <Text style={styles.admin}>Admin</Text>
                 </View>
 
@@ -26,14 +43,16 @@ export default function Profile({  navigation }: StackNavProps<"Profile"> ) {
                     <Text style={styles.contactText}>Contact Information</Text>
                     <View>
                         <Text style={styles.email}>Email</Text>
-                        <Text style={styles.email_}>uranpoland@gmail.com</Text>
+                        <Text style={styles.email_}>{email}</Text>
                     </View>
-                    <View>
+                    { contact && <View>
                         <Text style={styles.phone}>Phone no.</Text>
-                        <Text style={styles.phone_}>+1 12345 67898</Text>
-                    </View>
+                        <Text style={styles.phone_}>{contact}</Text>
+                    </View> }
 
-                    <TouchableOpacity style={styles.logoutSection}>
+                    <TouchableOpacity 
+                        style={styles.logoutSection}
+                        onPress={logoutHandler}>
                         <LogoutSvg height={15} width={15}/>
                         <Text style={styles.logOut}>Log out</Text>
                     </TouchableOpacity>

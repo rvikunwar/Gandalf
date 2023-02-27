@@ -5,21 +5,15 @@ import styles from './style'
 
 interface TagProps {
     text: string;
-    style?: ViewStyle
+    style?: ViewStyle,
+    color: string
 }
 
-export default function Tag({ text, style }: TagProps) {
+export default function Tag({ text, style, color }: TagProps) {
 
-    function fillColor(val: string){
-        switch(val){
-            case "Available": return "#00A938";
-            case "Verified": return "#FF0000";
-            default: return "#FF0000";
-        }
-    }
     return (
-        <View style={[ styles.tag, { borderColor: fillColor(text) }, style ]}>
-            <Text style={[{ color: fillColor(text) }, styles.text]}>{text}</Text>
+        <View style={[ styles.tag, { borderColor: color }, style ]}>
+            <Text style={[{ color: color }, styles.text]}>{text}</Text>
         </View>
     )
 }

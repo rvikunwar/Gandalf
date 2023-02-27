@@ -8,8 +8,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 8,
         paddingVertical: 20,
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         width: '100%',
+        alignItems: 'center',
         marginVertical: 10,
     },
     
@@ -56,7 +57,8 @@ const styles = StyleSheet.create({
         fontFamily: 'PlusJakartaSans-SemiBold',
         fontStyle: 'normal',
         fontWeight: "700",
-        fontSize: 19
+        fontSize: 19,
+        marginBottom: 5
     },
 
     position: {

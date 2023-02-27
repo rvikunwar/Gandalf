@@ -49,3 +49,5 @@ export type BusinessScreenNavigationProp = CompositeScreenProps<
   >
 >;
 
+
+export type ProfileScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Profile'>; 

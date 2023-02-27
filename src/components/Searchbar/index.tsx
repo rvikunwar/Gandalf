@@ -8,7 +8,7 @@ interface SearchbarProps {
     value: string;
     placeholderValue: string;
     style?: ViewStyle;
-    onSearchHandler: (val: string) => void;
+    onSearchHandler?: (val: string) => void;
     onClearHandler: () => void
 }
 

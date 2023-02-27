@@ -1,7 +1,7 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, Pressable } from 'react-native'
 import React, { useEffect, useMemo, useState } from 'react'
 import styles from './style'
-import { Logo } from '../../../assets'
+import { Logo, Visible, VisibleOff } from '../../../assets'
 import Button from "../../../components/Button"
 import Checkbox from '../../../components/Checkbox'
 import Toast from 'react-native-toast-message'
@@ -112,6 +112,12 @@ export default function Login() {
     },[ isSuccess, isError, message ])
 
 
+    //for toggling password visiblity
+    const [ showPassword, setShowPassword ] = useState(true);
+    function togglePasswordVisiblity(){
+        setShowPassword(!showPassword)
+    }
+
     return (
         <View style={styles.login}>
             <View style={styles.header}>
@@ -135,18 +141,25 @@ export default function Login() {
                     inputMode='email'
                     placeholderTextColor={"#000000"}/>
                 
-                <TextInput 
-                    value={formdata.password}
-                    style={styles.textBox}
-                    onChangeText={(text) => {
-                        setFormdata({
-                            ...formdata,
-                            "password": text
-                        })
-                    }}
-                    placeholder='Password'
-                    secureTextEntry={true}
-                    placeholderTextColor={"#000000"}/>
+                <View style={{ position: 'relative' }}>
+                    <TextInput 
+                        value={formdata.password}
+                        style={styles.textBox}
+                        onChangeText={(text) => {
+                            setFormdata({
+                                ...formdata,
+                                "password": text
+                            })
+                        }}
+                        placeholder='Password'
+                        secureTextEntry={showPassword}
+                        placeholderTextColor={"#000000"}/>
+                        
+                        <Pressable onPress={togglePasswordVisiblity} style={styles.iconStyle}>
+                            {showPassword?<Visible width={30}/>:<VisibleOff width={30}/>}
+                        </Pressable>
+                </View>
+
 
                 <View style={styles.mainStyle}>
                     <Checkbox 

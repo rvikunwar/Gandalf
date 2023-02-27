@@ -1,7 +1,5 @@
-import { View, Text, Switch } from 'react-native'
-import React, { useState } from 'react'
-import Avatar from '../../../../components/Avatar'
-import { Images } from '../../../../assets'
+import { View, Text } from 'react-native'
+import React from 'react'
 import styles from './style'
 
 export default function Header() {
@@ -10,7 +8,7 @@ export default function Header() {
 
     return (
         <View style={styles.header}>
-            <Avatar image={Images.defaultCompany} size={70}/>
+            {/* <Avatar image={Images.defaultCompany} size={70}/> */}
             <View style={styles.details}>
                 <Text style={styles.name}>Company Name</Text>
                 <Text style={styles.position}>found in -1994</Text>

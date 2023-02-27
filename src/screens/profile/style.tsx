@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#F1F3F6",
         width: "60%",
-        paddingVertical: 20
+        paddingVertical: 20,
+        paddingTop: 40,
     },
 
     name: {        
@@ -35,7 +36,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#F1F3F6",
         borderRadius: 8,
         paddingHorizontal: 25,
-        paddingVertical: 15
+        paddingVertical: 15,
+        paddingBottom: 40,
     },
 
     contactText: {

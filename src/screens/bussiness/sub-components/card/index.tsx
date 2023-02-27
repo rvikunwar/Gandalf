@@ -1,29 +1,67 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './style';
-import { Images } from '../../../../assets';
-import Avatar from '../../../../components/Avatar';
 import Tag from '../../../../components/Tag/index';
+import { formattingTimestamp } from '../../../../utils';
+import Acroynm from '../../../../components/Acroynm';
 
+interface CardProps {
+    lastName: string|null;
+    firstName: string|null;
+    isVerified: boolean;
+    isActive: boolean;
+    email: string | null;
+    contact: string | number | null;
+    createdAt: string
+}
 
-function Card(){
+function Card({ firstName, lastName, isVerified, isActive, email, contact, createdAt }: CardProps){
+
+    //for setting tags color
+    const [ color, setColor ] = useState({
+        'verified': "#CD3504",
+        'active': "#CD3504"
+    })
+
+    useEffect(()=>{
+        switch(isVerified){
+            case true:
+                setColor((e) => {
+                    e['verified'] = "#09AFCD";
+                    return {...e }
+                })
+                break;
+            default:
+                setColor((e) => {
+                    e['verified'] = "#CD3504";
+                    return {...e }
+                })
+        }
+    },[isVerified])
+
+    
     return (
         <View style={[ styles.card, styles.shadowProp ] }>
-            <Avatar image={Images.defaultProfile}/>
+            <Acroynm 
+                name={lastName && firstName ?`${firstName} ${lastName}`: firstName??lastName??"" } 
+                size={45}/>
             <View style={styles.main}>
                 <View style={styles.header}>
                     <View style={styles.desc}>
-                        <Text style={styles.name}>Robert Fox</Text>
-                        <Text style={styles.position}>Project Manager</Text>
+                        <Text style={styles.name}>{firstName}{' '}{lastName}</Text>
+                        {/* <Text style={styles.position}>Project Manager</Text> */}
                     </View>
                     <View>
-                        <Tag text="Verified" style={{ marginRight: 10, marginBottom: 5 }}/>
-                        <Tag text="Available"/>
+                        <Tag 
+                            color={color['verified']} 
+                            text={isVerified?"Verified":"Not verified"} 
+                            style={{ marginRight: 10, marginBottom: 5 }}/>
+                        {/* <Tag text="Available"/> */}
                     </View>
                 </View>
                 <View style={styles.footer}>
-                    <Text style={styles.email}>roberfox@gmail.com</Text>
-                    <Text style={styles.timestamp}>11, Sept 2022</Text>
+                    {email && <Text style={styles.email}>{email}</Text> }
+                    { createdAt && <Text style={styles.timestamp}>{formattingTimestamp(createdAt)}</Text> }
                 </View>
             </View>
         </View>

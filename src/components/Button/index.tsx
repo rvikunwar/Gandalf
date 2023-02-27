@@ -7,7 +7,7 @@ interface ButtonProp {
     style: ViewStyle,
     textStyle: TextStyle,
     title: string;
-    isDisabled: boolean;
+    isDisabled?: boolean;
 }
 
 export default function Button({ onPress, style, title, textStyle, isDisabled }: ButtonProp) {
