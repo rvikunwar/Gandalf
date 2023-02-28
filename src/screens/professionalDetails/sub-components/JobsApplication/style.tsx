@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
         paddingLeft: 5
     },
 
+    noData: {
+        marginTop: 40,
+        color: 'gray',
+        textAlign: 'center'
+    },
+
     jobView: {
         flexDirection: "row",
         alignItems: "center",

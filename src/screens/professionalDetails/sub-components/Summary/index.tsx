@@ -3,7 +3,24 @@ import React from 'react'
 import styles from './style'
 
 
-export default function Summary() {
+interface QualificationProps{
+    id: number,
+    profileId: number,
+    qualificationId: number,
+    qualification: {
+        id?: number,
+        value?: string
+    }
+}
+
+interface SummaryProps{
+    availability: number| undefined| null;
+    hourlyRate: number | undefined| null;
+    experience: number | undefined| null;
+    qualification: QualificationProps[]
+}
+
+export default function Summary({ availability, hourlyRate, experience, qualification }: SummaryProps) {
     return (
         <View style={styles.summary}>
             <View style={styles.row}>
@@ -11,30 +28,30 @@ export default function Summary() {
                 <Text style={styles.titleAns}>20</Text>
             </View>
 
-            <View style={styles.row}>
+            { experience ? <View style={styles.row}>
                 <Text style={styles.title}>Experience</Text>
-                <Text style={styles.titleAns}>5 years</Text>
-            </View>
+                <Text style={styles.titleAns}>{experience} years</Text>
+            </View>: null }
 
-            <View style={styles.row}>
-                <Text style={styles.title}>Total Projects Completed</Text>
-                <Text style={styles.titleAns}>20</Text>
-            </View>
-
-            <View style={styles.row}>
+            { hourlyRate ? <View style={styles.row}>
                 <Text style={styles.title}>Hourly Rate</Text>
-                <Text style={styles.titleAns}>$20 / hr</Text>
-            </View>
+                <Text style={styles.titleAns}>${hourlyRate} / hr</Text>
+            </View>: null }
 
+            { qualification.length > 0 && 
             <View style={styles.row}>
                 <Text style={styles.title}>Qualification</Text>
-                <Text style={styles.titleAns}>Master’s Degree</Text>
-            </View>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', flex: 1, justifyContent: 'flex-end' }}>
+                    {qualification.map((item, index) => (
+                        <Text key={index} style={styles.titleAns}> {item.qualification.value},</Text>
+                    ))}
+                </View>
+            </View>}
             
-            <View style={styles.row}>
+            { availability ? <View style={styles.row}>
                 <Text style={styles.title}>Availability</Text>
-                <Text style={styles.titleAns}>Hourly</Text>
-            </View>
+                <Text style={styles.titleAns}>{availability === 1? 'Hourly': 'Contract'}</Text> 
+            </View>: null }
         </View>
     )
 }

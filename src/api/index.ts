@@ -42,10 +42,12 @@ const requests = {
 };
 
 
-// THis will contain all the endpoints of the resources
+// This will contain all the endpoints of the resources
 export const endPoints = {
     login: 'auth/login/',
-    getUsers: 'user'
+    getUsers: 'user',
+    userDetails: (userId: number, userRole: number) => `user/profile/${userId}/${userRole}`,
+    userjob: (userId: number) => `jobapplication/appliedJobs/${userId}`
 }
 
 export const GandalfAppAPI = {
@@ -56,5 +58,12 @@ export const GandalfAppAPI = {
     //for fetching user
     getAllUsers: () => requests.get(`${BASE_URL}/${endPoints.getUsers}`),
 
+    //fetching user details
+    getUserDetails: (userId: number, userRole: number) => 
+            requests.get(`${BASE_URL}/${endPoints.userDetails(userId, userRole)}`),
+
+    //fetch job application by user
+    getJobApplication:  (userId: number) => 
+        requests.get(`${BASE_URL}/${endPoints.userjob(userId)}`)
 
 }

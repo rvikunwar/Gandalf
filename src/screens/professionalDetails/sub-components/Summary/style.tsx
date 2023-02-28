@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
         fontFamily: 'PlusJakartaSans-Bold',
         fontWeight: "600",
         fontSize: 16,  
+        flexWrap: 'wrap',
+        textAlign: 'right',
     }
 
 });

@@ -1,4 +1,4 @@
-import { NavigatorScreenParams } from '@react-navigation/native';
+import { NavigatorScreenParams, RouteProp } from '@react-navigation/native';
 import type { CompositeScreenProps } from '@react-navigation/native';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -7,8 +7,8 @@ export type RootStackParamList = {
     Login: undefined;
     MainScreen: NavigatorScreenParams<BottomTabParamList>;
     Profile: undefined;
-    BusinessDetail: undefined;
-    ProfessionalDetail: undefined;
+    BusinessDetail: { userId: number, userRole: number };
+    ProfessionalDetail: { userId: number, userRole: number };
 };
 
 
@@ -22,7 +22,6 @@ export type BottomTabParamList = {
 //Professional screen/tab
 export type ProfStackParamList = {
   ProfessionalManagement: undefined;
-
 };
 
 
@@ -36,7 +35,7 @@ export type ProfessionalScreenNavigationProp = CompositeScreenProps<
   NativeStackScreenProps<ProfStackParamList>,
   CompositeScreenProps<
     BottomTabScreenProps<BottomTabParamList, 'Professional'>,
-    NativeStackScreenProps<RootStackParamList>
+    NativeStackScreenProps<RootStackParamList, "ProfessionalDetail">
   >
 >;
 
@@ -49,5 +48,7 @@ export type BusinessScreenNavigationProp = CompositeScreenProps<
   >
 >;
 
+export type ProfessionalScreenRouteProp = RouteProp<RootStackParamList, 'ProfessionalDetail'>;
 
-export type ProfileScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Profile'>; 
+export type BusinessScreenRouteProp = RouteProp<RootStackParamList, 'BusinessDetail'>;
+

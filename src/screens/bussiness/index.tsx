@@ -19,13 +19,13 @@ function BusinessManagement({  navigation }: BusinessScreenNavigationProp) {
     //filters the data whenever searchValue changes
     useEffect(() => {
         if (searchValue === "") {
-            setBusiness(business)
+            setBusinessArray(business)
         } else {
             let filteredBusiness = business.filter((s) => {
                 let name = s.firstName + " " + s.lastName;
                 return name.toLowerCase().includes(searchValue.toLowerCase());
             });
-            setBusiness(filteredBusiness);
+            setBusinessArray(filteredBusiness);
         }
     }, [searchValue]);
 
@@ -35,39 +35,48 @@ function BusinessManagement({  navigation }: BusinessScreenNavigationProp) {
     }
 
     //for navigating to details screen
-    function goToDetailScreen(){
-        navigation.navigate("BusinessDetail")
+    function goToDetailScreen(id: number){
+        navigation.navigate("BusinessDetail", {
+            userId:id, userRole: 2
+        })
     } 
 
     //dispatch
     const dispatch = useGandalfDispatch();
     //fetching management user details - professional/ business
+
     useEffect(()=>{
-        dispatch(getAllManagements({}))
+        getBusiness()
     },[])
 
     //selector
-    const { business } = useGandalfSelector(managementSelector) 
-    const [ businessArray, setBusiness ] = useState<userProps[]>([])
-    useEffect(()=>{
-        //filtering only business
+    const { isFetching } = useGandalfSelector(managementSelector)
+    const [ business, setBusiness ] = useState<userProps[]>([])
+    const [ businessArray, setBusinessArray ] = useState<userProps[]>([])
+    async function getBusiness(){
+        const { business } = await dispatch(getAllManagements({})).unwrap()
+        setBusinessArray(business)
         setBusiness(business)
-    },[business])
+    }
+
+    useEffect(()=>{
+        dispatch(getAllManagements({}))
+    },[])
 
 
     //for refreshing list of professionals
     const [ refreshing, setRefreshing ] = useState(false)
     async function onRefresh(){
         setRefreshing(true)
-        await dispatch(getAllManagements({}))
+        await getBusiness();
         setRefreshing(false)
     }
 
     return (
-        <View style={{ backgroundColor: "#F1F3F6", paddingBottom: 70 }}>
+        <View style={{ backgroundColor: "white", flex: 1 }}>
 
             <Header 
-                title="Business \nManagement"
+                title={`Business ${'\n'}Management`}
                 logo={true}
                 headerStyle={{
                     width: "100%",
@@ -82,7 +91,7 @@ function BusinessManagement({  navigation }: BusinessScreenNavigationProp) {
                     navigation.navigate("Profile")
                 }}/>
             {
-                businessArray.length === 0 ?
+                isFetching && !refreshing ?
                 <Loader/>:
             
                 <FlatList
@@ -102,7 +111,7 @@ function BusinessManagement({  navigation }: BusinessScreenNavigationProp) {
                     }
                     renderItem={({ item }) => (
                         <TouchableOpacity
-                            onPress={goToDetailScreen} style={{ paddingHorizontal: 20 }}>
+                            onPress={() => goToDetailScreen(item.id)} style={{ paddingHorizontal: 20 }}>
                             <Card
                                 firstName={item.firstName}
                                 lastName={item.lastName}

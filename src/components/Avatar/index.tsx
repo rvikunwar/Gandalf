@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './style'
 
 interface AvatarProps {
-    image: ReturnType<typeof require>;
+    image: ReturnType<typeof require>|string;
     size?: number,
 }
 

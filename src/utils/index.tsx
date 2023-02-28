@@ -52,6 +52,11 @@ export function formattingTimestamp(timestamp: string){
     return moment(timestamp).format('MMM Do YYYY');
 }
 
+//timestamp - 2023
+export function formattingYearTimestamp(timestamp: string){
+    return moment(timestamp).year();
+}
+
 
 //for fetching name acroynm
 export function acronymName(str: string){
