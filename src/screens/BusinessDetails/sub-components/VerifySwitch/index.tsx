@@ -1,25 +1,26 @@
-import { View, Text, Switch } from 'react-native'
-import React, { useState } from 'react'
+import { View, Switch } from 'react-native'
+import React from 'react'
 import styles from './style'
 
-export default function VerifySwitch() {
 
-    //for toggling - verified/not verified
-    const [ isEnabled, setIsEnabled ] = useState(false)
-    function toggleSwitch(){
-        setIsEnabled(!isEnabled)
-    }
+interface VerifySwitchProps {
+    toggleSwitch: () => void;
+    verified: boolean
+}
+
+
+export default function VerifySwitch({ verified, toggleSwitch }: VerifySwitchProps) {
+
 
     return (
         <View style={styles.verify}>
             <Switch
                 trackColor={{false: '#767577', true: '#00BA3E'}}
-                thumbColor={isEnabled ? 'white' : '#f4f3f4'}
+                thumbColor={verified ? 'white' : '#f4f3f4'}
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleSwitch}
-                value={isEnabled}
+                value={verified}
             />
-            <Text style={styles.text}>Verify</Text>
         </View>
     )
 }

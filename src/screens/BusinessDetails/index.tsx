@@ -9,7 +9,10 @@ import { useRoute } from '@react-navigation/native'
 import { getUserDetails, managementSelector } from '../../store/features/userSlice'
 import { UserDetailProps } from '../../store/features/storeTypes'
 import { useGandalfDispatch, useGandalfSelector } from '../../hooks'
-import Loader from '../../components/Loader'
+import BusinessDetailSkeleton from '../../components/DetailLoader'
+import { BUSINESS_DETAIL } from '../../constant'
+import styles from './style'
+import { GandalfAppAPI } from '../../api'
 
 
 function BusinessDetails({ navigation }: BusinessScreenNavigationProp) {
@@ -29,8 +32,13 @@ function BusinessDetails({ navigation }: BusinessScreenNavigationProp) {
     const { userId, userRole } = route.params;
 
     async function getUser(){
-        const user = await dispatch(getUserDetails({ userId: userId, userRole: userRole })).unwrap()
-        setUserDetails(user)
+        try{
+            const user = await dispatch(getUserDetails({ userId: userId, userRole: userRole })).unwrap()
+            setUserDetails(user)
+            setVerified(user?.user?.isVerified??false)
+        } catch(e){
+            console.log(e)
+        }
     }
 
     useEffect(()=>{
@@ -39,27 +47,38 @@ function BusinessDetails({ navigation }: BusinessScreenNavigationProp) {
         }
     }, [userId, userRole])
 
+
+    
+    //for verification
+    const [ verified, setVerified ] = useState(false)
+    async function toggleVerificationSwitch(){
+        try{
+            if(verified === false){
+                setVerified(true)
+                await GandalfAppAPI.verifyUserStatus(userId)
+            }
+        } catch(e){
+            console.log(e)
+        }
+        
+    }
+
     return (
-        <View style={{ backgroundColor: "white", flex: 1, paddingBottom: 70 }}>
+        <View style={styles.business}>
 
             <Header 
-                title="Business Details"
-                headerStyle={{
-                    width: "100%",
-                    paddingHorizontal: 20
-                }}
-                textStyle={{
-                    flex: 0.6,
-                    fontSize: 17,
-                    fontWeight: "500"
-                }}
+                title={BUSINESS_DETAIL}
+                headerStyle={styles.headerStyle}
+                textStyle={styles.textStyle}
                 goToBack={goToBack}
                 goToProfile={() => { navigation.navigate("Profile") }}/>      
 
-            
-            { isFetching ? <Loader/>:
+            { 
+            isFetching ? <BusinessDetailSkeleton/>:
                 <ScrollView>
-                    <VerifySwitch/>
+                    <VerifySwitch
+                        verified={verified} 
+                        toggleSwitch={toggleVerificationSwitch}/>
                     <ProfileHeader
                         profilePicture={userDetails?.profilePicture}
                         companyName={userDetails?.companyName} 
@@ -69,7 +88,8 @@ function BusinessDetails({ navigation }: BusinessScreenNavigationProp) {
                         />
                     {userDetails?.about && <Description
                         aboutMe={userDetails?.about}/> }
-                </ScrollView>}
+                </ScrollView> 
+            } 
         </View>
     )
 }

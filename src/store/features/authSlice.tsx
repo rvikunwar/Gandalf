@@ -3,6 +3,7 @@ import { SerializedError, authStateProps, loginProps } from "./storeTypes";
 import { RootState } from "store";
 import { GandalfAppAPI } from "../../api";
 import axios from "axios";
+import { INVALID_CREDENTIALS } from "../../constant";
 
 
 export const loginUser = createAsyncThunk
@@ -22,7 +23,7 @@ export const loginUser = createAsyncThunk
                     return rejectWithValue({ message: error.response?.data.message } as SerializedError); 
                 }
             }
-            return rejectWithValue({ message: 'Invalid credentials'} as SerializedError); 
+            return rejectWithValue({ message: INVALID_CREDENTIALS} as SerializedError); 
         }
     }
 );

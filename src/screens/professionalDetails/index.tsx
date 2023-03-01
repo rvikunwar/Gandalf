@@ -9,11 +9,14 @@ import JobApplication from './sub-components/JobsApplication'
 import { ProfessionalScreenNavigationProp, ProfessionalScreenRouteProp } from '../../navigations/navigationTypes'
 import VerifySwitch from './sub-components/VerifySwitch'
 import { useGandalfDispatch, useGandalfSelector } from '../../hooks'
-import { getUserDetails, jobApplicationOfUser, managementSelector } from '../../store/features/userSlice'
+import { getUserDetails, managementSelector } from '../../store/features/userSlice'
 import { UserDetailProps } from '../../store/features/storeTypes'
 import { useRoute } from '@react-navigation/native'
+import ProfessionalDetailSkeleton from '../../components/DetailLoader'
+import { GandalfAppAPI } from '../../api'
+import { PROFESSIONAL_DETAIL } from '../../constant'
+import styles from './style'
 import Loader from '../../components/Loader'
-import { GandalfAppAPI } from 'api'
 
 
 function ProfessionalDetails({ navigation }: 
@@ -34,8 +37,14 @@ function ProfessionalDetails({ navigation }:
     const { userId, userRole } = route.params;
 
     async function getUser(){
-        const user = await dispatch(getUserDetails({ userId: userId, userRole: userRole })).unwrap()
-        setUserDetails(user)
+        try {
+            const user = await dispatch(getUserDetails({ 
+                userId: userId, userRole: userRole })).unwrap()
+            setUserDetails(user)
+            setVerified(user?.user?.isVerified??false)
+        } catch(e){
+            console.log(e)
+        }
     }
 
     useEffect(()=>{
@@ -46,33 +55,39 @@ function ProfessionalDetails({ navigation }:
 
 
     //for verification
-    function toggleVerificationSwitch(){
+    const [ verified, setVerified ] = useState(false)
+    async function toggleVerificationSwitch(){
+        try{
+            if(verified === false){
+                setVerified(true)
+                await GandalfAppAPI.verifyUserStatus(userId)
+            }
+        } catch(e){
+            console.log(e)
+        }
+        
     }
 
-
+    //FOR LOADING
+    const [ loader, setLoader ] =  useState(false)
 
     return (
         <View style={{ position: 'relative', backgroundColor: "white", paddingBottom: 70, flex: 1 }}>
 
+            
             <Header 
-                title="Professional Details"
-                headerStyle={{
-                    width: "100%",
-                    paddingHorizontal: 20
-                }}
-                textStyle={{
-                    flex: 0.6,
-                    fontSize: 17,
-                    fontWeight: "500"
-                }}
+                title={PROFESSIONAL_DETAIL}
+                headerStyle={styles.headerStyle}
+                textStyle={styles.textStyle}
                 goToBack={goToBack}
                 goToProfile={() => { navigation.navigate("Profile") }}/>    
             
+            { loader && <Loader/> }
             {isFetching ? 
-                <Loader/>:
+                <ProfessionalDetailSkeleton/>:
                 <ScrollView>
                     <VerifySwitch 
-                        verified={userDetails?.user?.isVerified??false} 
+                        verified={verified} 
                         toggleSwitch={toggleVerificationSwitch}/>
                     <ProfileHeader
                         profilePicture={userDetails?.profilePicture}
@@ -84,14 +99,18 @@ function ProfessionalDetails({ navigation }:
                         />
                     <Description
                         aboutMe={userDetails?.aboutMe}/>
-                    <Skills
-                        skills={userDetails?.skill??[]}/>
+                    { userDetails?.skill && userDetails?.skill.length>0 &&
+                        <Skills
+                            skills={userDetails?.skill??[]}/>}
                     <Summary
                         availability={userDetails?.availability}
                         hourlyRate={userDetails?.hourlyRate}
                         experience={userDetails?.workExperience}
                         qualification={userDetails?.qualification??[]}/>
-                    <JobApplication userId={userId}/>
+                    <JobApplication 
+                        userId={userId} 
+                        setLoader={setLoader}
+                        loader={loader}/>
                 </ScrollView>}
 
         </View>

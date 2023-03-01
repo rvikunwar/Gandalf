@@ -5,7 +5,7 @@ import styles from './style'
 export default function Loader() {
     return (
         <View style={styles.loader}>
-            <ActivityIndicator size="large" color="#0000ff"/>
+            <ActivityIndicator size="large" color="white"/>
         </View>
     )
 }

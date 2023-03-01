@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
 
     title: {
         color: "#66789C",
-        fontFamily: 'PlusJakartaSans-Regular',
+        fontFamily: 'Poppins-Regular',
         fontWeight: "600",
-        fontSize: 16, 
+        fontSize: 17, 
     },
 
     titleAns: {

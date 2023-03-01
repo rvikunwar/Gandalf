@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
 
     inputBox: {
-        width: "100%",
+        width: "90%",
         backgroundColor: "white",
         paddingHorizontal: 10,
         borderRadius: 10,

@@ -9,8 +9,6 @@ interface VerifySwitchProps {
 
 export default function VerifySwitch({ verified, toggleSwitch }: VerifySwitchProps) {
 
-    //for toggling - verified/not verified
-    const [ isEnabled, setIsEnabled ] = useState(verified)
 
     return (
         <View style={styles.verify}>

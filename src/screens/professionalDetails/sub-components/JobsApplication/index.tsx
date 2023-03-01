@@ -6,18 +6,23 @@ import OptionsModal from '../modal';
 import Job from './Job';
 import { GandalfAppAPI } from '../../../../api';
 import { JobProps } from '../../../../types';
+import { useGandalfDispatch } from '../../../../hooks';
+import { updateJobApplication } from '../../../../store/features/userSlice';
 
 
 interface JobApplicationProps {
-    userId: number
+    userId: number,
+    loader: boolean;
+    setLoader: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
-export default function JobApplication({ userId }: JobApplicationProps) {
+export default function JobApplication({ userId, setLoader, loader }: JobApplicationProps) {
 
     //for changing status - pending/not hired/hired
     const [ modalVisible, setModalVisible ] = useState(false);
-    function onStatusHandler(){
+    function onStatusHandler(id: number){
+        setJobSelectedState(id)
         setModalVisible(true)
     }
 
@@ -36,6 +41,7 @@ export default function JobApplication({ userId }: JobApplicationProps) {
         
     }
 
+    const [ jobSelected, setJobSelectedState ] = useState(0)
     useEffect(()=>{
         
         if(userId){
@@ -43,6 +49,39 @@ export default function JobApplication({ userId }: JobApplicationProps) {
         }
 
     },[userId])
+
+
+    //updating status
+    const dispatch = useGandalfDispatch()
+    async function updateJobApp(status: number){    
+        try{
+            setLoader(true)
+            const body = { "id": jobSelected, "applicationStatus": status }
+            const res = await dispatch(updateJobApplication( body ))  
+            console.log(res, userId)
+            setJobsState((e) => {
+                e = e.map((item) => {
+                    if(item.id === jobSelected){
+                        return {
+                            ...item,
+                            applicationStatus: status
+                        }
+                    }
+                    return item
+                })
+
+                return e;
+            }) 
+
+            setLoader(false)
+            setModalVisible(false)
+        } catch(e){
+            
+            setLoader(false)
+            console.log(e)
+            setModalVisible(false)
+        }
+    }
 
     return (
         <View style={styles.job}>
@@ -54,12 +93,14 @@ export default function JobApplication({ userId }: JobApplicationProps) {
                     jobName={item.job.description}
                     projectName={item.job.project.name}
                     action={item.applicationStatus}
-                    onStatusHandler={onStatusHandler}/>
+                    onStatusHandler={() => onStatusHandler(item.id)}/>
             ))}
 
             <OptionsModal 
                 modalVisible={modalVisible} 
-                setModalVisible={setModalVisible}/>
+                setModalVisible={setModalVisible}
+                updateJobApp={updateJobApp}
+                loader={loader}/>
         </View>
     )
 }

@@ -9,9 +9,10 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         paddingVertical: 20,
         paddingHorizontal: 10,
-        width: '100%',
+        width: '90%',
         marginVertical: 10,
-        alignItems: 'center'
+        marginHorizontal: '5%',
+        alignItems: 'center',
     },
     
     shadowProp: {
@@ -54,11 +55,11 @@ const styles = StyleSheet.create({
     },
 
     name: {
-        fontFamily: 'PlusJakartaSans-SemiBold',
+        fontFamily: 'Poppins-Medium',
         fontStyle: 'normal',
-        fontWeight: "700",
-        fontSize: 19,
-        marginBottom: 5
+        fontWeight: "600",
+        fontSize: 18,
+        marginBottom: 2
     },
 
     position: {

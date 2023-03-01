@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
         right: 0,
         width: '100%',
         alignItems: 'center',
-        backgroundColor: 'white'
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        zIndex: 10
     },
   });
   

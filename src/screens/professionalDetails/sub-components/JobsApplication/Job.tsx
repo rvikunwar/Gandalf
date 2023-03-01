@@ -12,7 +12,18 @@ interface JobProps {
     onStatusHandler: () => void;
 }
 
+enum jobApplicationStatus {
+    Applied = 0,
+    Completed = 1,
+    Accepted = 2,
+    Rejected = 3,
+    Hired = 4,
+    NotHired = 5,
+}
+
 export default function Job({ jobName, projectName, action, onStatusHandler }: JobProps) {
+
+    
     return (
         <View style={styles.jobView}>
             <View style={styles.left}>
@@ -23,7 +34,7 @@ export default function Job({ jobName, projectName, action, onStatusHandler }: J
                 </View>
             </View>
             <TouchableOpacity style={styles.status} onPress={onStatusHandler}>
-                <Text style={styles.statusText}>{action}</Text>
+                <Text style={styles.statusText}>{jobApplicationStatus[action]}</Text>
                 <ArrowDown width={13} height={13}/>
             </TouchableOpacity>
         </View>

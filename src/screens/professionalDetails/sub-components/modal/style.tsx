@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "rgba(0,0,0,0.4)"
+        backgroundColor: "rgba(0,0,0,0.4)",
+        zIndex:2
     },
 
     hired: {
@@ -18,6 +19,18 @@ const styles = StyleSheet.create({
 
     pending: {
         backgroundColor: "#09AFCD"
+    },
+
+    completed: {
+        backgroundColor: "#4495EB"
+    },
+
+    accepted: {
+        backgroundColor: "#0B9347"
+    },
+
+    rejected:{
+        backgroundColor: "#C14C09"
     },
 
     modalView: {
@@ -33,7 +46,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5,
+        elevation: 3,
+        zIndex: -1
     },
 
     close: {
@@ -48,7 +62,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginBottom: 10,
         elevation: 2,
+        marginHorizontal: 5,
+        justifyContent: "center"
     },
+
+    loader:{ marginTop: -10 },
+    
     buttonOpen: {
         backgroundColor: '#F194FF',
     },
@@ -64,6 +83,12 @@ const styles = StyleSheet.create({
         fontFamily: 'PlusJakartaSans-Regular',
         fontSize: 15,
     },
+
+    buttonContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center'
+    }
   });
 
   export default styles

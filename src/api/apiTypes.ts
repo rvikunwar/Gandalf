@@ -3,3 +3,9 @@ export interface loginProps {
     password: string,
     role: number
 };
+
+
+export interface JobApplicationBodyProps {
+    id: number;
+    applicationStatus: number;
+}

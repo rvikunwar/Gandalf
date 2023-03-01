@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style';
 import Tag from '../../../../components/Tag/index';
 import { formattingTimestamp } from '../../../../utils';
 import Acroynm from '../../../../components/Acroynm';
+
 
 interface CardProps {
     lastName: string|null;
@@ -12,10 +13,13 @@ interface CardProps {
     isActive: boolean;
     email: string | null;
     contact: string | number | null;
-    createdAt: string
+    createdAt: string;
+    goToDetailScreen: () => void;
 }
 
-function Card({ firstName, lastName, isVerified, isActive, email, contact, createdAt }: CardProps){
+function Card({ firstName, lastName, 
+    isVerified, isActive, email, contact, 
+    createdAt, goToDetailScreen }: CardProps){
 
     //for setting tags color
     const [ color, setColor ] = useState({
@@ -41,10 +45,12 @@ function Card({ firstName, lastName, isVerified, isActive, email, contact, creat
 
     
     return (
-        <View style={[ styles.card, styles.shadowProp ] }>
+        <Pressable
+            onPress={goToDetailScreen} 
+            style={[ styles.card, styles.shadowProp ] }>
             <Acroynm 
                 name={lastName && firstName ?`${firstName} ${lastName}`: firstName??lastName??"" } 
-                size={45}/>
+                size={50}/>
             <View style={styles.main}>
                 <View style={styles.header}>
                     <View style={styles.desc}>
@@ -64,7 +70,7 @@ function Card({ firstName, lastName, isVerified, isActive, email, contact, creat
                     { createdAt && <Text style={styles.timestamp}>{formattingTimestamp(createdAt)}</Text> }
                 </View>
             </View>
-        </View>
+        </Pressable>
     )
 }
 

@@ -3,6 +3,7 @@ import { Job, SerializedError, UserDetailProps, UserProps, userProps, userStateP
 import { RootState } from "store";
 import { GandalfAppAPI } from "../../api";
 import axios from "axios";
+import { SERVER_ERROR } from "../../constant";
 
 
 export const getAllManagements = createAsyncThunk
@@ -15,6 +16,8 @@ export const getAllManagements = createAsyncThunk
             // DEBUG
             // console.log(res)
             // return res;
+
+            
             //filtering only professionals
             let professionals: userProps[] = [], business: userProps[] = [];
             res.forEach((user: userProps) => {
@@ -54,7 +57,7 @@ export const getUserDetails = createAsyncThunk
                     return rejectWithValue({ message: error.response?.data.message } as SerializedError); 
                 }
             }
-            return rejectWithValue({ message: 'Server error' } as SerializedError); 
+            return rejectWithValue({ message: SERVER_ERROR } as SerializedError); 
         }
     }
 );
@@ -76,7 +79,30 @@ export const jobApplicationOfUser = createAsyncThunk
                     return rejectWithValue({ message: error.response?.data.message } as SerializedError); 
                 }
             }
-            return rejectWithValue({ message: 'Server error' } as SerializedError); 
+            return rejectWithValue({ message: SERVER_ERROR } as SerializedError); 
+        }
+    }
+); 
+
+
+export const updateJobApplication = createAsyncThunk
+    < Job[],  { id: number, applicationStatus: number }, 
+    { rejectValue: SerializedError }>
+    ("management/updateJobApplication",
+    async ( body, { rejectWithValue }) => {
+        try {
+            const res = await GandalfAppAPI.updateJobApplication(body);
+                
+            // DEBUG
+            // console.log(res, userId, 'JOB APPLICATION')
+            return res;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if(error.response){
+                    return rejectWithValue({ message: error.response?.data.message } as SerializedError); 
+                }
+            }
+            return rejectWithValue({ message: SERVER_ERROR } as SerializedError); 
         }
     }
 ); 
@@ -105,7 +131,7 @@ export const managementSlice = createSlice({
     extraReducers:  (builder) => {
         
         //GET USERS
-        builder.addCase(getAllManagements.fulfilled, (state, { payload }) => {
+        builder.addCase(getAllManagements.fulfilled, (state) => {
             
             state.isFetching = false;
             state.isSuccess = true;
@@ -130,7 +156,7 @@ export const managementSlice = createSlice({
 
 
         //GET USER DETAILS
-        builder.addCase(getUserDetails.fulfilled, (state, { payload }) => {
+        builder.addCase(getUserDetails.fulfilled, (state) => {
             
             state.isFetching = false;
             state.isSuccess = true;
@@ -154,14 +180,8 @@ export const managementSlice = createSlice({
         })
 
         //GET USER JOB APPLICATION
-        builder.addCase(jobApplicationOfUser.fulfilled, (state, { payload }) => {
-            if(state.user){
-                console.log(payload, 'payload')
-                payload.map((item)=>{
+        builder.addCase(jobApplicationOfUser.fulfilled, (state) => {
 
-                })
-                state.user.jobApplication = payload??[];
-            }
             state.isFetching = false;
             state.isSuccess = true;
             state.isError = false;
@@ -182,6 +202,31 @@ export const managementSlice = createSlice({
             }
 
         })
+
+        //UPDATE USER JOB APPLICATION
+        builder.addCase(updateJobApplication.fulfilled, (state) => {
+
+            state.isFetching = false;
+            state.isSuccess = true;
+            state.isError = false;
+            state.message = undefined;
+        })
+
+        .addCase(updateJobApplication.pending, (state) => {
+            state.isFetching = false;
+        })
+
+        .addCase(updateJobApplication.rejected, (state, action) => {
+            state.isFetching = false;
+            state.isError = true;
+            if(action.payload){
+                state.message = action.payload.message
+            } else {
+                state.message = action.error.message
+            }
+
+        })
+
       },
 });
 
