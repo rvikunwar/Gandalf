@@ -21,14 +21,15 @@ const styles = StyleSheet.create({
 
     name: {
         color: "#05264E",
-        fontFamily: 'PlusJakartaSans-Bold',
+        fontFamily: 'Poppins-Medium',
         fontSize: 22
     },
 
     position: {
         color: "#66789C",
-        fontSize: 16,
-        fontFamily: 'PlusJakartaSans-Regular',
+        fontSize: 15,
+        marginBottom: -5,
+        fontFamily: 'Poppins-Regular',
     },
 
     contact: {
@@ -37,12 +38,15 @@ const styles = StyleSheet.create({
 
     email: {
         color: "#66789C",
-        fontSize: 15,
+        fontSize: 16,
+        marginBottom: -5,
+        fontFamily: 'Poppins-Regular',
     },
 
     phone: {
         color: "#66789C",
         fontSize: 15,
+        fontFamily: 'Poppins-Regular',
     }
 
 });

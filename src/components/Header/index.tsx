@@ -21,7 +21,7 @@ export default function Header({ logo, title, headerStyle, goToBack, goToProfile
                     <Logo/>
                     <Text style={[ styles.title, textStyle ]}>{title}</Text>
                 </View>: 
-                goToBack && <TouchableOpacity onPress={goToBack}>
+                goToBack && <TouchableOpacity style={styles.goBack} onPress={goToBack}>
                     <BackSvg/>
                 </TouchableOpacity>}
 

@@ -10,17 +10,18 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontFamily: 'PlusJakartaSans-Medium',
-        fontWeight: "600",
+        fontFamily: 'Poppins-Medium',
+        fontWeight: "500",
         fontSize: 18,
+        marginBottom: -10,
         color: '#05264E'
     },
 
     text:{
         color: "#66789C",
-        fontSize: 15,
+        fontSize: 16,
         marginTop: 6,
-        fontFamily: 'PlusJakartaSans-Medium'
+        fontFamily: 'Poppins-Regular'
     }
 
 });

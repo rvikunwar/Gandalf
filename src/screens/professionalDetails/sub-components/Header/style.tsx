@@ -24,12 +24,14 @@ const styles = StyleSheet.create({
     name: {
         color: "#05264E",
         fontFamily: 'Poppins-Medium',
-        fontSize: 22
+        fontSize: 22,
+        marginBottom: -7,
     },
 
     position: {
         color: "#66789C",
         fontSize: 16,
+        marginBottom: -7,
         fontFamily: 'Poppins-Regular',
     },
 

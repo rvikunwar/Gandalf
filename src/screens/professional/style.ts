@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
 
     textStyle: {
         fontSize: 17,
-        fontWeight: "500"
+        fontWeight: "500",
+        marginLeft: 15,
     },
 
     searchbar: { 

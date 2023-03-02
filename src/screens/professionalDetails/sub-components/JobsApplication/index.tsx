@@ -1,7 +1,6 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
-import { ArrowDown, DotSvg } from '../../../../assets'
 import OptionsModal from '../modal';
 import Job from './Job';
 import { GandalfAppAPI } from '../../../../api';
@@ -85,7 +84,7 @@ export default function JobApplication({ userId, setLoader, loader }: JobApplica
 
     return (
         <View style={styles.job}>
-            <Text style={styles.title}>Accepted Job Application</Text>
+            {jobsState.length >0 && <Text style={styles.title}>Accepted Job Application</Text>}
             {jobsState.map((item, index) => (
                 <Job 
                     key={index}

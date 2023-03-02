@@ -5,7 +5,11 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
 
-    professional: { backgroundColor: "white", flex: 1 },
+    professional:{ 
+        position: 'relative', 
+        backgroundColor: "white", 
+        paddingBottom: 70, 
+        flex: 1 },
 
     headerStyle: {
         width: "100%",

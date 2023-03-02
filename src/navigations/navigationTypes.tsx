@@ -52,3 +52,4 @@ export type ProfessionalScreenRouteProp = RouteProp<RootStackParamList, 'Profess
 
 export type BusinessScreenRouteProp = RouteProp<RootStackParamList, 'BusinessDetail'>;
 
+export type ProfileScreenNavigationProp = NativeStackScreenProps<RootStackParamList, "Profile"> 

@@ -11,6 +11,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
 
+    goBack: {
+        width: 40,
+        height: '100%'
+    },
+
     left: {
         flexDirection: "row",
         alignItems: "center"
@@ -18,7 +23,7 @@ const styles = StyleSheet.create({
 
     title: {
         fontSize: 24,
-        fontFamily: "PlusJakartaSans-Regular",
+        fontFamily: "Poppins-Regular",
         fontWeight: "500",
         color: "#05264E",
         marginLeft: 8,

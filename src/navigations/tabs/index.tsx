@@ -23,7 +23,7 @@ export default function AdminBottomTab() {
                 tabBarInactiveTintColor: 'gray',
                 tabBarActiveTintColor: '#10047C',
                 tabBarLabelStyle: {
-                    fontFamily: 'PlusJakartaSans-Regular',
+                    fontFamily: 'Poppins-Regular',
                     fontSize: 15
                 }
                 })}

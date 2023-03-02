@@ -46,7 +46,7 @@ function Card({ firstName, lastName, isVerified, isActive, email, contact, creat
             style={[ styles.card, styles.shadowProp ] }>
             <Acroynm 
                 name={lastName && firstName ?`${firstName} ${lastName}`: firstName??lastName??"" } 
-                size={45}/>
+                size={50} fontSize={20}/>
             <View style={styles.main}>
                 <View style={styles.header}>
                     <View style={styles.desc}>

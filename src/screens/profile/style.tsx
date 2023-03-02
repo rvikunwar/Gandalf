@@ -12,36 +12,38 @@ const styles = StyleSheet.create({
     profileHeader: {
         alignItems: "center",
         backgroundColor: "#F1F3F6",
-        width: "60%",
+        width: "80%",
         paddingVertical: 20,
-        paddingTop: 40,
+        paddingTop: 60,
     },
 
     name: {        
-        fontFamily: "Lato-Regular",
-        fontWeight: "700",
-        fontSize: 20,
-        color: "#05264E"
+        fontFamily: 'Poppins-Medium',
+        fontWeight: "600",
+        fontSize: 24,
+        color: "#05264E",
+        marginTop: 6,
     },
 
     admin: {
-        fontFamily: "Lato-Regular",
+        fontFamily: "Poppins-Regular",
         fontWeight: "400",
-        fontSize: 16,
-        color: "#66789C"
+        fontSize: 17,
+        color: "#66789C",
+        marginTop: -4
     },
 
     contactStyle: {
-        width: "60%",
+        width: "80%",
         backgroundColor: "#F1F3F6",
         borderRadius: 8,
-        paddingHorizontal: 25,
+        paddingHorizontal: 45,
         paddingVertical: 15,
-        paddingBottom: 40,
+        paddingBottom: 80,
     },
 
     contactText: {
-        fontFamily: 'Lato-Regular',
+        fontFamily: 'Poppins-Regular',
         fontWeight: "600",
         fontSize: 18,        
         color: "#000000",
@@ -50,17 +52,20 @@ const styles = StyleSheet.create({
 
     email: {
         color: "#A0ABB8",
-        fontSize: 16,
-        fontFamily: "Lato-Regular",
+        fontSize: 18,
+        fontFamily: "Poppins-Regular",
     },
 
     email_: {
         color: "#66789C",
-        marginBottom: 7
+        marginBottom: 7,
+        fontSize: 16,
+        fontFamily: "Poppins-Regular",
+        marginTop: -7
     },
 
     phone: {
-        fontFamily: "Lato-Regular",
+        fontFamily: "Poppins-Regular",
         fontSize: 16,
         color: "#A0ABB8"
     },
@@ -79,7 +84,9 @@ const styles = StyleSheet.create({
     logOut: {
         color: "red",
         marginLeft: 5,
-        fontSize: 17
+        marginTop: 3,
+        fontSize: 17,
+        fontFamily: "Poppins-Regular",
     }
 });
   

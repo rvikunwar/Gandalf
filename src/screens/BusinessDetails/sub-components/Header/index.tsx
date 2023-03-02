@@ -25,10 +25,10 @@ export default function Header({
             { profilePicture ?  <Avatar image={profilePicture} size={70}/>:
                 <Acroynm
                     name={companyName??"C"}  
-                    size={55}/>}
+                    size={55} fontSize={23}/>}
             <View style={styles.details}>
                 <Text style={styles.name}>{ companyName }</Text>
-                {foundedin?<Text style={styles.position}>found in - {formattingYearTimestamp(foundedin)}</Text>: null}
+                {foundedin?<Text style={styles.position}>Founded in - {formattingYearTimestamp(foundedin)}</Text>: null}
                 <View style={styles.contact}>
                    { email &&<Text style={styles.email}>{email}</Text> }
                    { contact && <Text style={styles.phone}>{contact}</Text> }

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        fontFamily: 'PlusJakartaSans-Regular',
+        fontFamily: 'Poppins-Regular',
         fontSize: 16,
         flex: 1,
     }

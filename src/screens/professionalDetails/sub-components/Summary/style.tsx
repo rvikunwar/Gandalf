@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
     summary: {
         paddingHorizontal: 20,
         marginTop: 20,
-        borderTopColor: '#313131',
+        paddingTop: 20,
+        borderTopColor: '#D5D5D5',
         borderTopWidth: 0.2,
-        paddingTop: 20
     },
 
     row: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 
     titleAns: {
         color: "#05264E",
-        fontFamily: 'PlusJakartaSans-Bold',
+        fontFamily: 'Poppins-Medium',
         fontWeight: "600",
         fontSize: 16,  
         flexWrap: 'wrap',

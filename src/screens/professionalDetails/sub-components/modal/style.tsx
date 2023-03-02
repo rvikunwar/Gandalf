@@ -74,14 +74,15 @@ const styles = StyleSheet.create({
 
     textStyle: {
         color: 'white',
-        fontFamily: 'PlusJakartaSans-Bold',
+        fontFamily: 'Poppins-Regular',
         textAlign: 'center',
     },
     modalText: {
         marginBottom: 15,
         textAlign: 'center',
-        fontFamily: 'PlusJakartaSans-Regular',
-        fontSize: 15,
+        fontFamily: 'Poppins-Medium',
+        fontSize: 17,
+        fontWeight: "600",
     },
 
     buttonContainer: {

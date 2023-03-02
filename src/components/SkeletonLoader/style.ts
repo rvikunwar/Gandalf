@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         position: 'relative',
-        marginBottom: 10,
+        marginBottom: 5,
         
     }
 });

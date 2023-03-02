@@ -24,7 +24,7 @@ export default function Header({
                 <Acroynm
                     name={lastName && firstName ?
                         `${firstName} ${lastName}`: firstName??lastName??"U" }  
-                    size={55}/>}
+                    size={55} fontSize={23}/>}
                     
             <View style={styles.details}>
                 {lastName && firstName ?

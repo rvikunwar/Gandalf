@@ -10,7 +10,7 @@ export default function Description({ aboutMe }: DescriptionProps) {
     return (
         <View style={styles.description}>
             <Text style={styles.title}>About Company</Text>
-            <Text style={styles.text}>{aboutMe??""}</Text>
+            <Text style={styles.text}>{aboutMe??""} </Text>
         </View>
     )
 }

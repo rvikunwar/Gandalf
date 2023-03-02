@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
 
     skillTag: {
         paddingHorizontal: 10,
-        paddingVertical: 5,
+        paddingVertical: 2,
         backgroundColor: "#3C65F5",
         borderRadius: 5,
         alignItems: "center",
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        fontFamily: 'Lato-Regular',
+        fontFamily: 'Poppins-Regular',
         fontWeight: "400",
         fontSize: 16,        
         color: "#FFFFFF",

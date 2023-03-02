@@ -12,7 +12,7 @@ import { useGandalfDispatch, useGandalfSelector } from '../../hooks'
 import { getUserDetails, managementSelector } from '../../store/features/userSlice'
 import { UserDetailProps } from '../../store/features/storeTypes'
 import { useRoute } from '@react-navigation/native'
-import ProfessionalDetailSkeleton from '../../components/DetailLoader'
+import ProfessionalDetailSkeleton from '../../components/DetailLoader/Professional'
 import { GandalfAppAPI } from '../../api'
 import { PROFESSIONAL_DETAIL } from '../../constant'
 import styles from './style'
@@ -72,7 +72,7 @@ function ProfessionalDetails({ navigation }:
     const [ loader, setLoader ] =  useState(false)
 
     return (
-        <View style={{ position: 'relative', backgroundColor: "white", paddingBottom: 70, flex: 1 }}>
+        <View style={styles.professional}>
 
             
             <Header 
@@ -97,8 +97,8 @@ function ProfessionalDetails({ navigation }:
                         email={userDetails?.user?.email} 
                         currentRole={userDetails?.currentRole}
                         />
-                    <Description
-                        aboutMe={userDetails?.aboutMe}/>
+                    { userDetails?.aboutMe?.trim() && <Description
+                        aboutMe={userDetails?.aboutMe}/>}
                     { userDetails?.skill && userDetails?.skill.length>0 &&
                         <Skills
                             skills={userDetails?.skill??[]}/>}

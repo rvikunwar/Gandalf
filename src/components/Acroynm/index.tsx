@@ -6,9 +6,10 @@ import styles from './style';
 interface AcroynmProps {
     name: string;
     size?: number,
+    fontSize?: number,
 }
 
-export default function Acroynm({ name, size }: AcroynmProps) {
+export default function Acroynm({ name, size, fontSize }: AcroynmProps) {
     return (
             <View style={{ 
                 width: size??25, 
@@ -16,7 +17,7 @@ export default function Acroynm({ name, size }: AcroynmProps) {
                 borderRadius: size?? 15, 
                 backgroundColor: fetchRandomColor(acronymName(name)),
                 ...styles.acryonm }}>
-                <Text style={styles.text}>{acronymName(name??"")}</Text>
+                <Text style={[styles.text, { fontSize }]}>{acronymName(name??"")}</Text>
             </View>
     )
 }

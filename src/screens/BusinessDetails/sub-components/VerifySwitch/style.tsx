@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     text: {
         color: "#05264E",
         fontSize: 15,
-        fontFamily: 'PlusJakartaSans-Regular',
+        fontFamily: 'Poppins-Regular',
     }
 
 });

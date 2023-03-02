@@ -31,14 +31,14 @@ export default function OptionsModal({ modalVisible, setModalVisible, updateJobA
 
                         <Text style={styles.modalText}>Action</Text>
                         <View style={styles.buttonContainer}>
-
+{/* 
                             <Pressable
                                 disabled={loader}
                                 onPress={()=>updateJobApp(0)}
                                 style={[styles.button, styles.pending ]}
                                 >
                                 <Text style={styles.textStyle}>Applied</Text>
-                            </Pressable>
+                            </Pressable> */}
 
                             <Pressable
                                 disabled={loader}
@@ -47,7 +47,7 @@ export default function OptionsModal({ modalVisible, setModalVisible, updateJobA
                                 >
                                 <Text style={styles.textStyle}>Completed</Text>
                             </Pressable>
-                            
+{/*                             
                             <Pressable
                                 disabled={loader}
                                 onPress={()=>updateJobApp(2)}
@@ -62,7 +62,7 @@ export default function OptionsModal({ modalVisible, setModalVisible, updateJobA
                                 style={[styles.button, styles.rejected ]}
                                 >
                                 <Text style={styles.textStyle}>Rejected</Text>
-                            </Pressable>
+                            </Pressable> */}
 
                             <Pressable
                                 disabled={loader}

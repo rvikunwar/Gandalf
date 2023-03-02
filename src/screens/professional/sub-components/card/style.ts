@@ -38,16 +38,16 @@ const styles = StyleSheet.create({
     },
 
     email: {
-        fontFamily: "PlusJakartaSans-Medium",
+        fontFamily: "Poppins-Regular",
         fontWeight: "400",
-        fontSize: 15,
-        marginTop: -12
+        fontSize: 16,
+        marginTop: -11
     },
     timestamp: {
-        fontFamily: "PlusJakartaSans-Medium",
+        fontFamily: "Poppins-Regular",
         fontWeight: "400",
-        fontSize: 13,
-        marginTop: -2
+        fontSize: 14,
+        marginTop: -5
     },
 
     desc: {
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     },
 
     position: {
-        fontFamily: 'PlusJakartaSans-Regular',
+        fontFamily: 'Poppins-Regular',
         fontStyle: 'normal',
         fontWeight: "500",
         fontSize: 15,

@@ -7,13 +7,14 @@ const styles = StyleSheet.create({
         alignSelf: "flex-start",
         borderRadius: 10,
         borderWidth: 1,
-        paddingHorizontal: 10,
-        paddingVertical: 2,
+        paddingHorizontal: 7,
+        paddingVertical: 1,
 
     },
 
     text: {
-        fontSize: 9,
+        fontFamily: "Poppins-Regular",
+        fontSize: 10,
     }
   });
   

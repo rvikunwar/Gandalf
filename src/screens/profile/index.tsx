@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import Avatar from '../../components/Avatar'
-import { Images, LogoutSvg } from '../../assets'
+import { LogoutSvg } from '../../assets'
 import styles from './style'
 import BackButton from '../../components/BackButton'
 import { ProfileScreenNavigationProp } from '../../navigations/navigationTypes'
@@ -33,8 +32,9 @@ export default function Profile({  navigation }: ProfileScreenNavigationProp ) {
                     {/* <Avatar image={Images.defaultProfile} size={120}/>
                      */}
                     <Acroynm
+                        fontSize={25}
                         name={lastName && firstName ?`${firstName} ${lastName}`: firstName??lastName }  
-                        size={55}/>
+                        size={65}/>
                     <Text style={styles.name}>{firstName+" "+lastName}</Text>
                     <Text style={styles.admin}>Admin</Text>
                 </View>

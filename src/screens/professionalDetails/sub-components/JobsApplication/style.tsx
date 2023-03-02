@@ -6,17 +6,30 @@ const styles = StyleSheet.create({
     job: {
         paddingHorizontal: 20,
         marginTop: 20,
-        borderTopColor: '#313131',
+        borderTopColor: '#D5D5D5',
         borderTopWidth: 0.2,
-        paddingTop: 20
+        paddingTop: 20,
+    },
+
+    card: {
+        flexDirection: "row",
+        
+    },
+
+    shadowProp: {
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
     },
 
     title: {
-        fontFamily: 'PlusJakartaSans-Bold',
+        fontFamily: 'Poppins-Medium',
         fontWeight: "600",
         fontSize: 20,        
         color: "#05264E",
-        paddingLeft: 5
+        paddingLeft: 5,
+        marginBottom: 8
     },
 
     noData: {
@@ -27,9 +40,15 @@ const styles = StyleSheet.create({
 
     jobView: {
         flexDirection: "row",
-        alignItems: "center",
+        alignItems: "flex-start",
         justifyContent: "space-between",
-        marginVertical: 10
+        marginVertical: 10,
+
+        
+        backgroundColor: '#F1F3F6',
+        borderRadius: 8,
+        paddingVertical: 20,
+        paddingHorizontal: 15
     },
     
     left: {
@@ -37,27 +56,26 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
 
-    content: {
-        marginLeft: 10
-    },
 
     position: {
-        color: "#000000",
+        color: "#66789C",
         fontSize: 15,
-        fontFamily: 'PlusJakartaSans-Regular',
+        fontFamily: 'Poppins-Regular',
     },
 
     project: {
-        color: "#66789C",
-        fontSize: 17,
-        fontFamily: 'PlusJakartaSans-Regular',
+        color: "#05264E",
+        fontSize: 16,
+        marginBottom: -6,
+        fontWeight: "500",
+        fontFamily: 'Poppins-Medium',
     },
 
     status: {
         borderColor: " #F2F6FD",
         borderWidth: 1,
-        paddingHorizontal: 15,
-        paddingVertical: 4,
+        paddingHorizontal: 8,
+        paddingVertical: 1,
         borderRadius: 10,
         flexDirection: 'row',
         alignItems: "center"
@@ -65,10 +83,9 @@ const styles = StyleSheet.create({
 
     statusText: {
         color: "#000000",
-        fontSize: 14,
-        marginTop: -5,
+        fontSize: 12,
         marginRight: 5,
-        fontFamily: 'PlusJakartaSans-Regular',
+        fontFamily: 'Poppins-Regular',
     }
 
 });
